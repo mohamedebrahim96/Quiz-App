@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gray_quiz">
+
+
+    <include
+        android:visibility="visible"
+        layout="@layout/login_activity"/>
+
+    <include
+        android:visibility="gone"
+        layout="@layout/signup_activity"/>
+
+</RelativeLayout>
