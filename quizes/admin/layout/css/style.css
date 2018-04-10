@@ -1,0 +1,669 @@
+    /* Start Main Rulez */
+    
+    body{
+        background-color: #F4F4F4;
+        font-size: 15px;
+        height: 100%;
+    }
+
+html {
+	height: 100%;
+}
+
+	.bg {
+		
+		height: 10%;
+		background-color:#2c3e50;
+		
+		
+
+
+	}
+    
+    .asterisk {
+        font-size: 30px;
+        position: absolute;
+        right: 149px;
+        top: 290px;
+        color: #be3e3e;
+    }
+    
+    /* End Main Rulez */
+    
+    
+    /* Start Register and Login Form */
+
+
+	.login-panel-box {
+		
+		
+		margin-top:60px;
+		
+	}
+
+	.login-panel-box .panel-body {
+
+		padding-bottom: 0;
+	}
+
+	.login-panel-box .panel-danger {
+		
+		
+		border-color: #2c3e50 !important;
+
+
+
+	}
+
+	.login-panel-box .panel-danger>.panel-heading {
+		
+		
+		color: #2ecc71;
+		background-color: #2c3e50;
+		border-color: #2c3e50 !important;
+
+
+
+	}
+
+	
+
+
+	 .title {
+
+		text-align: center;
+		margin-top:-56px;
+		margin-bottom: 5px; 
+		color: #2ec35f;
+    	font-size: 27px;
+
+	}
+
+	.sub-title {
+		
+		margin: 5px 0 ;
+		color: #357da1;
+    	font-size: 20px;
+
+	}
+
+
+	.login {
+
+		width: 300px;
+		margin: 100px auto;
+		margin-top: 35px;
+
+
+	}
+
+	.login input {
+		
+		margin-bottom:5px;
+
+	}
+
+	 .login .btn {
+        color: #2ecc71;
+		background-color: #2c3e50;
+		border-color: #2c3e50;
+
+    }
+
+	.login .btn:active {
+		
+		background-color: #34495e;
+		border-color: #FFF !important;
+	
+	}
+
+	.login .btn:hover {
+		
+		background-color: #34495e;
+		border-color: #FFF !important;
+	
+	}
+
+
+    
+    
+    /* End Login Form */ 
+
+
+
+	/* Starting Exams Page */
+
+
+	.main-table {
+	-webkit-box-shadow: 0 3px 10px #CCC;
+	-moz-box-shadow: 0 3px 10px #CCC;
+	box-shadow: 0 3px 10px #CCC;
+	}
+
+	.main-table td {
+		background-color: #FFF;
+		vertical-align: middle !important;
+	}
+
+	.main-table tr:first-child td { /* You Can Use Thead */
+		background-color: #2c3e50;
+		color: #b53d4b;
+	}
+
+	.main-table .btn {
+		padding: 3px 10px;
+	}
+
+
+
+	/* Ending Exams Page */
+
+
+
+
+
+
+
+	/*Starting Home Page*/ 
+
+
+
+	 /*Nav Tabs*/
+
+	ul.nav.nav-tabs {
+		
+		background-color: #ccc;
+
+	}
+
+	.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: #b53d3d;
+    cursor: default;
+    background-color: #2c3e50;
+    border: 1px solid #ddd;
+    border-bottom-color: #78595900;
+	}
+
+	a {
+    color: #b53d4b;
+    text-decoration: none;
+	}
+
+
+	.sel-home {
+		
+		background-color: #2c3e50 ;
+		color:#b53d3d;
+		font-size: 17px;
+
+	}
+
+
+	/*Starting Buttons*/ 
+
+
+	
+	.starting {
+
+		color: #2ecc71 !important;
+		background-color: #2c3e50 !important;
+		border-color: #2c3e50 !important;
+		margin-top: 5px;
+		margin-bottom: 5px;
+
+	}
+
+		
+
+    }
+
+	.starting:active {
+		
+		background-color: #34495e !important;
+		border-color: #FFF !important;
+	
+	}
+
+	.starting:hover {
+		
+		background-color: #34495e !important;
+		border-color: #FFF !important;
+	
+	}
+
+	#go-btn {
+		
+		color: #FFF !important ;
+		width:170px;
+
+
+	}
+
+
+
+/*	End of Starting Buttons*/
+
+
+
+
+
+
+
+
+
+
+	/*Ending Home Page*/ 
+
+
+ /*Starting Questions Page */ 
+
+
+	.ques {
+
+		background-color: #f39c12 ;
+		color: #2c3e50;
+
+	}
+
+	.ques-ans {
+		
+		background-color: #FFF ;
+		color: #2c3e50;
+		font-size: 20px;
+		
+
+	}
+
+
+	
+
+
+
+
+
+ /*End Questions Page */ 
+
+
+
+    
+    
+    
+    
+    /*Start Bootstrap Edit*/
+    
+    
+    .navbar-inverse{
+        
+        background-color:#2c3e50;
+        
+    }
+    
+    .navbar {
+        border-radius: 0;
+        margin-bottom: 0;
+    }
+    
+    .navbar-brand {
+        font-size:1em;
+        
+        
+    }
+    
+    .navbar .nav {
+        margin-left: 25px;
+    }
+    
+    .navbar-inverse .navbar-nav>li>a {
+        color: #000;
+    }
+    
+    
+    
+    
+    .nav > li > a ,
+    .navbar-brand {
+        padding: 15px 12px ;
+        padding-bottom: 14px;
+    }
+    
+    
+    
+    .navbar-inverse .navbar-brand {
+        padding: 15px 12px ;
+        background-color:  #1ee773;
+       
+        
+    }
+    
+    .navbar-inverse .navbar-nav .brand-left {
+        background-color: #1ee773;
+        padding: 17px;
+    }
+    
+    .navbar-inverse .navbar-nav >.open >a,
+    .navbar-inverse .navbar-nav >.open >a:hover,
+    .navbar-inverse .navbar-nav >.open >a:focus,
+    .dropdown-menu{
+        background-color: #1ee773;
+        
+    }
+    
+    .dropdown-menu {
+        
+       
+        min-width: 188px;
+        padding: 0;
+        font-size: 15px;
+        color:
+        border: none;
+        border-radius: 0;
+            
+        
+    }
+    
+    .dropdown-menu > li > a {
+        color: #fff;
+        padding: 15px 15px;
+    }
+    
+    .dropdown-menu > li > a:hover,
+    .dropdown-menu > li > a:focus{
+        background-color: #0e803e;
+    }
+    
+    .form-control {
+        position: relative ;
+    }
+    
+   
+    
+    
+    
+    
+    
+    /*End Bootstrap Edit*/
+    
+    
+    /*Start Dashboard Page*/
+    
+    .home-stats .stat {
+        color :#FFF ;
+        padding: 20px ;
+        font-size: 15px;
+        text-align: center;
+        border-radius : 10px;
+        margin-top:20px;
+        
+    }
+    
+    .home-stats .stat a {
+        color : #FFF ;
+        qzAtext-decoration: none ;
+        
+    }
+    .home-stats .stat a:hover {
+        
+        text-decoration: none ;
+    }
+    
+    .home-stats .stat span {
+        display: block ;
+        font-size: 50px;
+    }
+    
+    .home-stats .st-members {
+        background-color : #3498db ;
+    }
+    .home-stats .st-pending {
+        background-color : #c0392b ;
+    }
+    .home-stats .st-items {
+        background-color : #d35400 ;
+    }
+    .home-stats .st-comments {
+        background-color : #8e44ad ;
+    }
+    
+    .latest {
+        margin-top:30px;
+    }
+    
+    .latest-user {
+        margin-bottom: 0;
+    }
+    
+    .latest-user li {
+        padding:5px;
+        overflow: hidden;
+    }
+    
+    .latest-user li:nth-child(odd) {
+        
+        background-color: #EEE ;
+        
+    }
+    
+    .latest-user .btn-danger ,
+    .latest-user .btn-info ,
+    .latest-user .btn-success{
+        padding :3px 8px ;
+        margin-left:2px;
+    }
+    
+    
+    /*End Dashboard Page*/
+
+    
+    /*Start Exams Page*/
+
+   .question-stats .stat {
+	color :#FFF ;
+	padding: 20px ;
+	font-size: 20px;
+	text-align: center;
+	border-radius : 10px;
+	margin-top:20px;
+
+	}
+
+
+
+	.question-stats .stat a {
+	color : #FFF ;
+	qzAtext-decoration: none ;
+
+	}
+    .question-stats .stat a:hover {
+        
+        text-decoration: none ;
+    }
+    
+    .question-stats .stat span {
+        display: block ;
+        font-size: 50px;
+    }
+    
+    .question-stats .st-add-question {
+        background-color : #8e44ad ;
+    }
+    .question-stats .st-view-question {
+        background-color : #27ae60 ;
+    }
+    .question-stats .st-add-question {
+        background-color : #2c3e50 ;
+    }
+
+	#exams-table {
+		
+		font-size: 18px;
+		color:#2c3e50;
+
+	}
+    
+    
+#duration-span {
+	color:#27ae60;
+	font-size: 20px;
+}
+    
+    
+    
+    
+    /*End Exams Page*/
+    
+    
+    /*Start Category Page*/
+    
+    .categories .panel-body {
+        padding:0;
+    }
+    
+    
+    
+    .categories .option a {
+        color:#888 ;
+        text-decoration: none;
+       
+        
+    }
+    
+    .categories .option span {
+        color:#888 ;
+        cursor:pointer;
+        
+        
+    }
+    
+    .categories .option .active {
+        color : #F00 ;
+    }
+    
+    .categories .cat h3 {
+        cursor: pointer ;
+    }
+    
+    .categories hr {
+        margin-top:0;
+        margin-bottom:0 ;
+    }
+    
+    .categories .cat {
+        padding :15px;
+        position: relative ;
+        overflow: hidden ;
+    }
+    
+    .categories .cat:hover {
+        background-color:#EEE;
+    }
+    
+    .categories .cat:hover .hidden-btns {
+        right :10px ;
+    }
+    
+    .categories .cat .hidden-btns {
+        -webkit-transition: all .5s ease-in-out ;
+        -moz-transition: all .5s ease-in-out ;
+        transition : all .5s ease-in-out ;
+        position: absolute ;
+        top:15px;
+        right: -120px; 
+    }
+    
+    .categories .cat .hidden-btns a {
+        
+        margin-right:5px;
+        
+       
+        
+    }
+    
+    
+    .categories .cat h3 {
+        
+        margin: 0;
+        font-weight: bold;
+        color: #966d25;
+        
+    }
+    
+    .categories .cat .full-view {
+        margin-bottom: 5px;
+    }
+    
+    
+    .categories .cat .full-view p {
+        margin-top: 18px;
+        margin-bottom: 18px;
+        color:#707070;
+    }
+    
+    .categories .cat:last-of-type ~ hr { /* Last Cat hr hidden*/
+        display: none ;
+    }
+    
+   
+    
+    .categories .cat .visability {
+        background-color:#e67e22 ;
+        color:#FFF ;
+        padding :5px 15px ;
+        margin-right:6px;
+        border-radius: 6px;
+    }
+    
+    .categories .cat .commenting {
+        
+        background-color:#2c3e50 ;
+        color:#FFF ;
+        padding :5px 15px ;
+        margin-right:6px;
+        border-radius: 6px;
+        
+        
+    }
+    
+    .categories .cat .advertising {
+        
+        background-color:#c0392b ;
+        color:#FFF ;
+        padding :5px 15px ;
+        margin-right:6px;
+        border-radius: 6px;
+        advertising
+        
+    }
+    
+    
+    
+    
+    
+    /*End Category Page*/
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
