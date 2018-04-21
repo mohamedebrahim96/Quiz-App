@@ -12,6 +12,8 @@
 
     <include
         android:visibility="gone"
+        android:id="@+id/layout_signup"
         layout="@layout/signup_activity"/>
+
 
 </RelativeLayout>

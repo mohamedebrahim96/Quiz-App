@@ -14,16 +14,16 @@ import retrofit2.http.POST;
 
 public interface RegisterAPI {
 
-    @POST("/quiz/insert.php")
+    @POST("metquiz/insert.php")
     @FormUrlEncoded
-    Call<ResponseBody> insertUser2(@Field("cardnumber") String card_number,
+    Call<ResponseBody> insertUser(@Field("cardnumber") String card_number,
                                    @Field("email") String email,
                                    @Field("password") String password,
                                    @Field("fname") String fname,
                                    @Field("lname") String lname,
                                    @Field("phone") String phone);
 
-    @POST("/quiz/login.php")
+    @POST("/metquiz/login.php")
     @FormUrlEncoded
     Call<ResponseBody> loging_user(@Field("cardnumber") String card_number,
                                    @Field("password") String password);

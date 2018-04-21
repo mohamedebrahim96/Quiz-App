@@ -289,9 +289,9 @@ public class MainActivity extends AppCompatActivity {
         // name, website
 
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-        String name = prefs.getString("name", "User Name");//"No name defined" is the default value.
-        String email = prefs.getString("email", "email@gmail.com");
-        String imageurl = prefs.getString("imageurl", "defaultStringIfNothingFound");
+        String name = prefs.getString("name", "@mohamedebrahim96");//"No name defined" is the default value.
+        String email = prefs.getString("email", "ebrahimm132@gmail.com");
+        String imageurl = prefs.getString("imageurl", "https://avatars2.githubusercontent.com/u/16405013?s=460&v=4");
         String cover = prefs.getString("cover", "defaultStringIfNothingFound");
 
 

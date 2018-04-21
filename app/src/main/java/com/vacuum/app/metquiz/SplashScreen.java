@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,12 +48,13 @@ public class SplashScreen extends Activity implements View.OnClickListener{
     SharedPreferences.Editor editor;
     LinearLayout social;
     private static int SPLASH_TIME_OUT = 3000;
-
+    String ROOT_URL;
     private EditText cardnumber,email,password,fname,lname,phone,login_cardnumber,login_password;
-    TextView later,terms,terms2;
+    TextView later,terms,terms2,register;
     Context context;
     Button buttonRegister,login_btn;
     Context mContext;
+    LinearLayout layout_signup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +70,8 @@ public class SplashScreen extends Activity implements View.OnClickListener{
         phone =  findViewById(R.id.phone);
         buttonRegister =  findViewById(R.id.buttonRegister);
         login_btn =  findViewById(R.id.login_btn);
+        layout_signup =  findViewById(R.id.layout_signup);
+        register =  findViewById(R.id.register);
 
 
         login_cardnumber =  findViewById(R.id.login_cardnumber);
@@ -89,13 +93,14 @@ public class SplashScreen extends Activity implements View.OnClickListener{
                 "fonts/airbnb.ttf");
         Typeface face3 = Typeface.createFromAsset(getAssets(),
                 "fonts/DK Magical Brush.otf");
+        ROOT_URL = "http://192.168.1.5/";
 
 
         terms.setTypeface(face2);
         terms2.setTypeface(face2);
         later.setTypeface(face3);
 
-
+        register.setOnClickListener(this);
         buttonRegister.setOnClickListener(this);
         login_btn.setOnClickListener(this);
         terms2.setOnClickListener(this);
@@ -130,17 +135,18 @@ public class SplashScreen extends Activity implements View.OnClickListener{
                 startActivity(new Intent(SplashScreen.this, PrivacyPolicyActivity.class));
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 break;
+            case R.id.register:
+                layout_signup.setVisibility(View.VISIBLE);
+                break;
             case R.id.later:
                 skipSplash();
                 break;
         }
-
     }
 
 
 
     private void insertUser() {
-        String ROOT_URL = "http://192.168.1.5/";
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ROOT_URL)
@@ -148,7 +154,7 @@ public class SplashScreen extends Activity implements View.OnClickListener{
                 .build();
 
         RegisterAPI api = retrofit.create(RegisterAPI.class);
-        api.insertUser2(
+        api.insertUser(
                 cardnumber.getText().toString(),
                 email.getText().toString(),
                 password.getText().toString(),
@@ -163,8 +169,9 @@ public class SplashScreen extends Activity implements View.OnClickListener{
                     String responsse ;
                     try {
                         responsse  = response.body().string();
-                        System.out.println("====================================================");
-                        System.out.println(responsse);
+                        //System.out.println("====================================================");
+                        //System.out.println(responsse);
+                        Log.e("TAG", responsse.toString());
                         Toast.makeText(context,responsse, Toast.LENGTH_SHORT).show();
 
                     } catch (IOException e) {
@@ -175,13 +182,13 @@ public class SplashScreen extends Activity implements View.OnClickListener{
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.e("TAG", "Unable to submit post to API.");
+                Log.e("TAG", "insertUser():: Unable to submit post to API.");
             }
         });
     }
 
     private void login() {
-        String ROOT_URL = "http://192.168.1.5/";
+
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ROOT_URL)
@@ -200,9 +207,11 @@ public class SplashScreen extends Activity implements View.OnClickListener{
                     String responsse ;
                     try {
                         responsse  = response.body().string();
-                        System.out.println("====================================================");
-                        System.out.println(responsse);
+                        //System.out.println("====================================================");
+                        //System.out.println(responsse);
                         Toast.makeText(context,responsse, Toast.LENGTH_SHORT).show();
+                        //Log.e("TAG", responsse.toString());
+
                         if (responsse.equals("Login Successfully")){
                             skipSplash();
                         }
