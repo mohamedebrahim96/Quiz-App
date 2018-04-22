@@ -78,7 +78,7 @@ public class GridFragment extends Fragment {
     private void prepareMovieData2() {
         List<Item> items = new ArrayList<>();
         items.add(new Item("Results",  R.drawable.if_heart_favourite_favorite_love_2203510));
-        items.add(new Item("Questions",  R.drawable.ic_notifications_black_24dp));
+        items.add(new Item("QuestionsFragment",  R.drawable.ic_notifications_black_24dp));
         items.add(new Item("History", R.drawable.if_explore_326636));
         items.add(new Item("Settings", R.drawable.ic_settings_black_24dp));
         items.add(new Item("Barcode scanner", R.drawable.if_qrcode_1608801));

@@ -2,10 +2,14 @@ package com.vacuum.app.metquiz.Utils;
 
 import android.widget.EditText;
 
+import com.vacuum.app.metquiz.Model.Example;
+import com.vacuum.app.metquiz.Model.QuestionModel;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 /**
@@ -27,4 +31,11 @@ public interface RegisterAPI {
     @FormUrlEncoded
     Call<ResponseBody> loging_user(@Field("cardnumber") String card_number,
                                    @Field("password") String password);
+
+
+
+    @GET("/metquiz/getquestions.php")
+    Call<Example> getQuestions();
+
+
 }

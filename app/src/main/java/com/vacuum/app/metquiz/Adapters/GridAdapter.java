@@ -7,10 +7,8 @@ import android.graphics.Typeface;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,8 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vacuum.app.metquiz.Fragments.BarcodeFragment;
-import com.vacuum.app.metquiz.Fragments.Questions;
-import com.vacuum.app.metquiz.MainActivity;
+import com.vacuum.app.metquiz.Fragments.QuestionsFragment;
 import com.vacuum.app.metquiz.Model.Item;
 import com.vacuum.app.metquiz.Model.Person;
 import com.vacuum.app.metquiz.NavigationDrawer.SettingsFragment;
@@ -32,7 +29,6 @@ import java.util.List;
 
 import io.realm.Realm;
 
-import static android.support.v4.content.ContextCompat.checkSelfPermission;
 import static com.vacuum.app.metquiz.MainActivity.TAG_Barcodescanner;
 import static com.vacuum.app.metquiz.MainActivity.TAG_HOME;
 import static com.vacuum.app.metquiz.MainActivity.TAG_QUESTIONS;
@@ -110,7 +106,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.MyViewHolder> 
                 if (position == 0){
                     Toast.makeText(mContext, "this is number " +position, Toast.LENGTH_SHORT).show();
                 }else if(position == 1){
-                    Questions questions = new Questions();
+                    QuestionsFragment questions = new QuestionsFragment();
                     loadfragment(questions,TAG_QUESTIONS);
                 }else if(position == 2){
                     Toast.makeText(mContext, "this is number " +position, Toast.LENGTH_SHORT).show();
