@@ -22,6 +22,9 @@
 
     </string-array>
 
+    <string name="price_format">$%1$s</string>
+    <string name="name_format">Product %1$s</string>
+
     <string name="Login_later"> <u>Login later</u>  </string>
     <string name="Login_policy">by continuing , you agree to accept our </string>
     <string name="Login_policy2"> <u> policy</u>  </string>

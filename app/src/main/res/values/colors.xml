@@ -24,5 +24,6 @@
     <color name="premium">#ffb90b</color>
     <color name="gray_quiz">#2E2E2E</color>
     <color name="white">#fff</color>
+    <color name="dark_white">#c8c8c8</color>
 
 </resources>

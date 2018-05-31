@@ -1,22 +1,14 @@
 package com.vacuum.app.metquiz.Fragments;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
@@ -40,7 +32,7 @@ import java.util.List;
  * Created by Home on 2017-08-29.
  */
 
-public class GridFragment extends Fragment {
+public class HomeFragment extends Fragment {
     RecyclerView recyclerView;
     GridAdapter countryAdapter;
     SliderLayout mDemoSlider;
@@ -61,10 +53,10 @@ public class GridFragment extends Fragment {
         if (new InternetStatus(mContext).isNetworkConnected())
         {
             new LongOperation().execute();
-            Toast.makeText(mContext, "Internet", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(mContext, "Internet", Toast.LENGTH_SHORT).show();
         }else {
             hashmap();
-            Toast.makeText(mContext, "no connection", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(mContext, "no connection", Toast.LENGTH_SHORT).show();
         }
 
 
@@ -78,8 +70,8 @@ public class GridFragment extends Fragment {
     private void prepareMovieData2() {
         List<Item> items = new ArrayList<>();
         items.add(new Item("Results",  R.drawable.if_heart_favourite_favorite_love_2203510));
-        items.add(new Item("QuestionsFragment",  R.drawable.ic_notifications_black_24dp));
-        items.add(new Item("History", R.drawable.if_explore_326636));
+        items.add(new Item("Questions",  R.drawable.ic_notifications_black_24dp));
+        items.add(new Item("Notification", R.drawable.if_explore_326636));
         items.add(new Item("Settings", R.drawable.ic_settings_black_24dp));
         items.add(new Item("Barcode scanner", R.drawable.if_qrcode_1608801));
 

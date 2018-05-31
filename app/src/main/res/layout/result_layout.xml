@@ -14,10 +14,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:text="You have score 25 points"
+        android:text="You Scored"
         android:layout_centerVertical="true"
         android:gravity="center"
         android:textSize="30sp"
+        android:id="@+id/title_score"
+        fontPath="fonts/airbnb.ttf"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="100/79"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:layout_below="@+id/title_score"
         fontPath="fonts/airbnb.ttf"
         />
     <LinearLayout

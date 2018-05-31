@@ -1,5 +1,6 @@
 package com.vacuum.app.metquiz;
 
+import android.arch.persistence.room.Room;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -24,8 +25,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
-import android.webkit.CookieManager;
-import android.webkit.CookieSyncManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -33,9 +32,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.facebook.stetho.Stetho;
-import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
-import com.vacuum.app.metquiz.Fragments.GridFragment;
+import com.vacuum.app.metquiz.Fragments.HomeFragment;
 import com.vacuum.app.metquiz.Fragments.NotifyFragment;
 import com.vacuum.app.metquiz.NavigationDrawer.AboutUsActivity;
 import com.vacuum.app.metquiz.NavigationDrawer.CustomTypefaceSpan;
@@ -43,13 +40,12 @@ import com.vacuum.app.metquiz.NavigationDrawer.FavoriteFragment;
 import com.vacuum.app.metquiz.NavigationDrawer.PrivacyPolicyActivity;
 import com.vacuum.app.metquiz.NavigationDrawer.SettingsFragment;
 import com.vacuum.app.metquiz.NavigationDrawer.TermsConditions;
-import com.vacuum.app.metquiz.Search.SearchFragment;
+import com.vacuum.app.metquiz.Splash.SplashScreen;
+import com.vacuum.app.metquiz.Utils.MyDatabase;
 
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
-import static com.vacuum.app.metquiz.SplashScreen.MY_PREFS_NAME;
+import static com.vacuum.app.metquiz.Splash.SplashScreen.MY_PREFS_NAME;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -80,12 +76,42 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG_QUESTIONS = "QUESTIONS";
 
     public static String CURRENT_TAG = TAG_HOME;
-    SearchFragment searchFragment;
     // toolbar titles respected to selected nav menu item
     public static String[] activityTitles;
 
     // flag to load home fragment when user presses back key
     private boolean shouldLoadHomeFragOnBackPress = true;
+
+
+    public static MainActivity INSTANCE;
+    private static final String DATABASE_NAME = "MyDatabase";
+    private static final String PREFERENCES = "RoomDemo.preferences";
+    private static final String KEY_FORCE_UPDATE = "force_update";
+
+    private MyDatabase database;
+
+    public static MainActivity get() {
+        return INSTANCE;
+    }
+
+
+    public MyDatabase getDB() {
+        return database;
+    }
+
+    public boolean isForceUpdate() {
+        return getSP().getBoolean(KEY_FORCE_UPDATE, true);
+    }
+
+    public void setForceUpdate(boolean force) {
+        SharedPreferences.Editor edit = getSP().edit();
+        edit.putBoolean(KEY_FORCE_UPDATE, force);
+        edit.apply();
+    }
+
+    private SharedPreferences getSP() {
+        return getSharedPreferences(PREFERENCES, MODE_PRIVATE);
+    }
 
 
     @Override
@@ -108,22 +134,20 @@ public class MainActivity extends AppCompatActivity {
         imgNavHeaderBg =  navHeader.findViewById(R.id.img_header_bg);
         imgProfile =  navHeader.findViewById(R.id.img_profile);
 
+
+
+        // create database
+        database = Room.databaseBuilder(getApplicationContext(), MyDatabase.class, DATABASE_NAME)
+                .addMigrations(MyDatabase.MIGRATION_1_2)
+                .build();
+
+        INSTANCE = this;
+
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/airbnb.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );
-
-        Stetho.initialize(
-                Stetho.newInitializerBuilder(this)
-                        .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
-                        .enableWebKitInspector(RealmInspectorModulesProvider.builder(this).build())
-                        .build());
-
-        Realm.init(this);
-        Realm.setDefaultConfiguration(new RealmConfiguration.Builder()
-                .deleteRealmIfMigrationNeeded()
-                .build());
 
         notify_layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
                 setToolbarTitle();
             }
         });
-        editsearch.setOnSearchClickListener(new View.OnClickListener() {
+        /*editsearch.setOnSearchClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 searchFragment = new SearchFragment();
@@ -150,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
                 navItemIndex = 3;
                 CURRENT_TAG = TAG_NOTIFICATIONS;
             }
-        });
+        });*/
         //================================================
 
         // load toolbar titles from string resources
@@ -246,7 +270,6 @@ public class MainActivity extends AppCompatActivity {
             CURRENT_TAG = TAG_NOTIFICATIONS;
             loadHomeFragment();
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -362,12 +385,12 @@ public class MainActivity extends AppCompatActivity {
         switch (navItemIndex) {
             case 0:
                 // home
-                GridFragment homeFragment = new GridFragment();
+                HomeFragment homeFragment = new HomeFragment();
                 return homeFragment;
             case 1:
                 // photos
-                SearchFragment browseFragment = new SearchFragment();
-                return browseFragment;
+                HomeFragment homeFragment2 = new HomeFragment();
+                return homeFragment2;
             case 2:
                 // movies fragment
                 FavoriteFragment favoriteFragment = new FavoriteFragment();
@@ -382,7 +405,7 @@ public class MainActivity extends AppCompatActivity {
                 SettingsFragment settingsFragment = new SettingsFragment();
                 return settingsFragment;
             default:
-                return new GridFragment();
+                return new HomeFragment();
         }
     }
 

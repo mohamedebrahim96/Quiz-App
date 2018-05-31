@@ -11,8 +11,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -24,7 +26,7 @@ import static android.content.Context.MODE_PRIVATE;
 import static com.vacuum.app.metquiz.MainActivity.TAG_SETTINGS;
 import static com.vacuum.app.metquiz.MainActivity.activityTitles;
 import static com.vacuum.app.metquiz.MainActivity.navItemIndex;
-import static com.vacuum.app.metquiz.SplashScreen.MY_PREFS_NAME;
+import static com.vacuum.app.metquiz.Splash.SplashScreen.MY_PREFS_NAME;
 
 
 /**
@@ -33,12 +35,13 @@ import static com.vacuum.app.metquiz.SplashScreen.MY_PREFS_NAME;
 
 public class SettingsFragment extends Fragment implements CompoundButton.OnCheckedChangeListener,View.OnClickListener {
 
-    Button clearcach;
+    Button clearcach,button_ip;
     SharedPreferences.Editor editor;
     Context mContext;
     SwitchButton sb1,sb3,sb4,sb5,sb6,sb7,sb8;
     Vibrator vibe;
     RelativeLayout terms,policy,Themes,Language;
+    EditText edittext_ip;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,6 +57,8 @@ public class SettingsFragment extends Fragment implements CompoundButton.OnCheck
         policy = view.findViewById(R.id.policy);
         Themes = view.findViewById(R.id.Themes);
         Language = view.findViewById(R.id.Language);
+        edittext_ip = view.findViewById(R.id.edittext_ip);
+        button_ip = view.findViewById(R.id.button_ip);
 
 
 //====================================================================
@@ -76,11 +81,10 @@ public class SettingsFragment extends Fragment implements CompoundButton.OnCheck
 
 
 
-
+        editor = mContext.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
         clearcach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editor = mContext.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
                 editor.clear().commit();
                 Toast.makeText(mContext,"Cache Cleared",Toast.LENGTH_SHORT).show();
 
@@ -99,6 +103,7 @@ public class SettingsFragment extends Fragment implements CompoundButton.OnCheck
         policy.setOnClickListener(this);
         Themes.setOnClickListener(this);
         Language.setOnClickListener(this);
+        button_ip.setOnClickListener(this);
         return view;
     }
 
@@ -125,7 +130,16 @@ public class SettingsFragment extends Fragment implements CompoundButton.OnCheck
         }else if(view==Themes||view==Language){
             Toast.makeText(mContext, "Go Preimum first", Toast.LENGTH_SHORT).show();
             vibe.vibrate(100);
-        }else {
+        }else if(view == button_ip){
+            editor.putString("ip", "http://192.168.1."+ edittext_ip.getText().toString()+ "/" );
+            editor.apply();
+            View view2 = getActivity().getCurrentFocus();
+            if (view2 != null) {
+                InputMethodManager imm = (InputMethodManager)mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+            Toast.makeText(mContext, "Successfully Changed", Toast.LENGTH_SHORT).show();
+        }   else {
             startActivity(new Intent(mContext, TermsConditions.class));
             getActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }

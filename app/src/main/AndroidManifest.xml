@@ -21,7 +21,7 @@
         <activity android:name=".NavigationDrawer.TermsConditions"/>
 
 
-        <activity android:name=".SplashScreen">
+        <activity android:name=".Splash.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

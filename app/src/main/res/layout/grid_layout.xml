@@ -18,19 +18,8 @@
     card_view:cardUseCompatPadding="true"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <FrameLayout
-        android:background="#FF0000"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        card_view:cardCornerRadius="7dp"
-        android:layout_margin="2dp"
-        card_view:cardElevation="100dp"
-        >
+
 
 
 
@@ -64,7 +53,6 @@
     </android.support.v7.widget.CardView>
 
 
-</android.support.v7.widget.CardView>
     <Button
         android:layout_width="20dp"
         android:layout_height="20dp"

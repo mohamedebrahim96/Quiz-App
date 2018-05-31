@@ -1,5 +1,6 @@
 package com.vacuum.app.metquiz.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -46,13 +47,14 @@ import static com.vacuum.app.metquiz.MainActivity.navItemIndex;
 public class QuestionsFragment extends Fragment implements View.OnClickListener{
 
     WebView mWebView;
-    String ROOT_URL = "http://192.168.1.5/";
+    String ROOT_URL = "http://192.168.1.6/";
     List<QuestionModel> questions ;
     TextView question_count,question,text_btn1,text_btn2,text_btn3,text_btn4;
     LinearLayout buttonslayout;
     RelativeLayout result_layout;
     Button btn1,btn2,btn3,btn4;
     public static int x = 0;
+    Context mContext;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,7 +62,7 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.questions_fragment, container, false);
 
-
+        mContext = this.getActivity();
 
         mWebView =  view.findViewById(R.id.webview);
         buttonslayout =  view.findViewById(R.id.buttonslayout);
@@ -123,13 +125,16 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
         api.getQuestions().enqueue(new Callback<Example>() {
             @Override
             public void onResponse(Call<Example> call, Response<Example> response) {
-                questions = new ArrayList<>();
 
-                for (QuestionModel fruit : response.body().getQuestionModel()) {
-                    questions.add(fruit);
-                }
 
-                quesion_setup();
+                    questions = new ArrayList<>();
+
+                    for (QuestionModel fruit : response.body().getQuestionModel()) {
+                        questions.add(fruit);
+                    }
+
+                    quesion_setup();
+
             }
 
             @Override

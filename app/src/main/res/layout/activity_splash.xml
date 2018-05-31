@@ -6,14 +6,10 @@
     android:background="@color/gray_quiz">
 
 
-    <include
-        android:visibility="visible"
-        layout="@layout/login_activity"/>
-
-    <include
-        android:visibility="gone"
-        android:id="@+id/layout_signup"
-        layout="@layout/signup_activity"/>
-
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 
 </RelativeLayout>

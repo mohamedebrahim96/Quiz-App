@@ -5,7 +5,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/gray_quiz">
-
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/quizs"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="180dp"
@@ -168,6 +175,7 @@
                 android:textSize="12dp"
                 android:textColor="#ffffff"
                 android:id="@+id/terms"
+                fontPath="fonts/DK Magical Brush.otf"
                 android:text="@string/Login_policy" />
 
             <TextView
@@ -177,6 +185,7 @@
                 android:textColor="#0645AD"
                 android:layout_marginLeft="3dp"
                 android:id="@+id/terms2"
+                fontPath="fonts/DK Magical Brush.otf"
                 android:text="@string/Login_policy2" />
         </LinearLayout>
     </LinearLayout>

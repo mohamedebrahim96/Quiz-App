@@ -272,6 +272,58 @@
             />
 
     </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fff"
+        android:orientation="horizontal"
+        >
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#c6c6c6"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            />
+        <TextView
+            style="@style/Base.TextAppearance.AppCompat.Large"
+            fontPath="fonts/airbnb.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="192.168.1."
+            android:id="@+id/ip"
+            android:textSize="16sp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="2dp"
+            android:id="@+id/edittext_ip"
+            android:layout_toRightOf="@+id/ip"
+            android:inputType="numberDecimal"
+            android:text="6"
+            fontPath="fonts/airbnb.ttf"
+            android:textSize="16sp"
+            style="@style/Base.TextAppearance.AppCompat.Large"
+            />
+        <Button
+            android:id="@+id/button_ip"
+            android:layout_width="80dp"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:background="@drawable/grediant_button"
+            android:layout_margin="10dp"
+            android:checked="true"
+            android:text="add IP"
+            android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
 
     <TextView
         android:layout_width="match_parent"
