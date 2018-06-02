@@ -74,6 +74,7 @@
                     android:theme="@style/MyEditTextTheme"
                     android:layout_height="wrap_content"
                     android:textAlignment="textEnd"
+                    android:imeOptions="actionDone"
                     android:hint="كلمة المرور"
                     fontPath="fonts/GE_SS_Two_Bold.otf"
                     android:textColor="#fff"

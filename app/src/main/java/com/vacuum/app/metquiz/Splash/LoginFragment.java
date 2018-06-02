@@ -2,14 +2,17 @@ package com.vacuum.app.metquiz.Splash;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -30,13 +33,15 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static android.content.Context.MODE_PRIVATE;
 import static com.vacuum.app.metquiz.Splash.SignupFragment.SIGNUP_FRAGMENT_TAG;
+import static com.vacuum.app.metquiz.Splash.SplashScreen.MY_PREFS_NAME;
 
 public class LoginFragment extends Fragment implements View.OnClickListener{
 
     final static String LOGIN_FRAGMENT_TAG ="LOGIN_FRAGMENT_TAG";
 
-    String ROOT_URL ="http://192.168.1.5/";
+    String ROOT_URL ;
     private EditText login_cardnumber,login_password;
     TextView later,terms,terms2,register;
     Button login_btn;
@@ -58,8 +63,16 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
         mContext = this.getActivity();
 
-        //editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-
+        login_password.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                   login();
+                    return true;
+                }
+                return false;
+            }
+        });
 
 
         later =  view.findViewById(R.id.later);
@@ -70,19 +83,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
         terms2.setOnClickListener(this);
         later.setOnClickListener(this);
 
-
         return view;
     }
-
-
-
-    private void skipSplash()
-    {
-        Intent i = new Intent(getActivity(), MainActivity.class);
-        startActivity(i);
-        getActivity().finish();
-    }
-
 
     @Override
     public void onClick(View view) {
@@ -114,6 +116,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
     private void login() {
 
+        SharedPreferences prefs = mContext.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        ROOT_URL = prefs.getString("ip", "http://192.168.1.5/");
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ROOT_URL)
@@ -138,6 +142,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                         //Log.e("TAG", responsse.toString());
 
                         if (responsse.equals("Login Successfully")){
+                            SharedPreferences.Editor editor = mContext.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                            editor.putString("login_cardnumber",login_cardnumber.getText().toString());
+                            editor.putString("login_password",login_password.getText().toString());
+                            editor.apply();
                             skipSplash();
                         }
 
@@ -153,5 +161,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
             }
         });
     }
+    private void skipSplash()
+    {
+        Intent i = new Intent(getActivity(), MainActivity.class);
+        startActivity(i);
+        getActivity().finish();
+    }
+
 
 }

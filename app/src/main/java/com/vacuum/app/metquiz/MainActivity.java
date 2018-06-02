@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtName, txtWebsite;
     ActionBarDrawerToggle actionBarDrawerToggle;
     View parentLayout;
-    SharedPreferences.Editor editor;
     // index to identify current nav menu item
     public static int navItemIndex = 0;
 

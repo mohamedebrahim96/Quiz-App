@@ -199,7 +199,7 @@ input::selection {
 .red .progress .inner .percent,
 .orange .progress .inner .percent {
   line-height: 90px;
-  font-size: 55.3076923076923px;
+  font-size: 40px;
 }
 .green .progress .inner .percent {
   color: #03c603;

@@ -8,14 +8,17 @@ import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kyleduo.switchbutton.SwitchButton;
@@ -47,7 +50,7 @@ public class SettingsFragment extends Fragment implements CompoundButton.OnCheck
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mContext = this.getActivity();
-        View view = inflater.inflate(R.layout.settings_fragment, container, false);
+        final View view = inflater.inflate(R.layout.settings_fragment, container, false);
         mContext = this.getActivity();
 
 
@@ -91,6 +94,17 @@ public class SettingsFragment extends Fragment implements CompoundButton.OnCheck
             }
         });
 
+
+        edittext_ip.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    Done(view);
+                    return true;
+                }
+                return false;
+            }
+        });
         sb1.setOnCheckedChangeListener(this);
         sb3.setOnCheckedChangeListener(this);
         sb4.setOnCheckedChangeListener(this);
@@ -106,6 +120,8 @@ public class SettingsFragment extends Fragment implements CompoundButton.OnCheck
         button_ip.setOnClickListener(this);
         return view;
     }
+
+
 
     @Override
     public void onCheckedChanged(final CompoundButton compoundButton, boolean b) {
@@ -131,18 +147,22 @@ public class SettingsFragment extends Fragment implements CompoundButton.OnCheck
             Toast.makeText(mContext, "Go Preimum first", Toast.LENGTH_SHORT).show();
             vibe.vibrate(100);
         }else if(view == button_ip){
-            editor.putString("ip", "http://192.168.1."+ edittext_ip.getText().toString()+ "/" );
-            editor.apply();
-            View view2 = getActivity().getCurrentFocus();
-            if (view2 != null) {
-                InputMethodManager imm = (InputMethodManager)mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-            }
-            Toast.makeText(mContext, "Successfully Changed", Toast.LENGTH_SHORT).show();
+            Done(view);
         }   else {
             startActivity(new Intent(mContext, TermsConditions.class));
             getActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }
 
+    }
+
+    private void Done(View view) {
+        editor.putString("ip", "http://192.168.1."+ edittext_ip.getText().toString()+ "/" );
+        editor.apply();
+        View view2 = getActivity().getCurrentFocus();
+        if (view2 != null) {
+            InputMethodManager imm = (InputMethodManager)mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+        Toast.makeText(mContext, "Successfully Changed", Toast.LENGTH_SHORT).show();
     }
 }

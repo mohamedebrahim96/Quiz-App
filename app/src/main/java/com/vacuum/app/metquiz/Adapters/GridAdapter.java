@@ -179,7 +179,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.MyViewHolder> 
         fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
                 android.R.anim.fade_out);
         fragmentTransaction.replace(R.id.container, Fragment, TAG);
-        fragmentTransaction.addToBackStack(TAG_HOME);
+        fragmentTransaction.addToBackStack(TAG);
         fragmentTransaction.commitAllowingStateLoss();
     }
 

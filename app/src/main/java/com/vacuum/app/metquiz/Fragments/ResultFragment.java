@@ -11,14 +11,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 
 import com.vacuum.app.metquiz.Adapters.ProductAdapter;
 import com.vacuum.app.metquiz.MainActivity;
 import com.vacuum.app.metquiz.Model.Product;
 import com.vacuum.app.metquiz.R;
+import com.vacuum.app.metquiz.Utils.Expandable.CustomExpandableListAdapter;
+import com.vacuum.app.metquiz.Utils.Expandable.ExpandableListDataPump;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -31,6 +37,13 @@ public class ResultFragment extends Fragment {
 
     Context mContext;
     RecyclerView recyclerView;
+    ExpandableListView expandableListView;
+    ExpandableListAdapter expandableListAdapter;
+    List<String> expandableListTitle;
+    HashMap<String, List<String>> expandableListDetail;
+
+
+
 
 
     @Override
@@ -42,18 +55,64 @@ public class ResultFragment extends Fragment {
         mContext = this.getActivity();
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
 
+
+
+        expandableListView = (ExpandableListView) view.findViewById(R.id.expandableListView);
+        expandableListDetail = ExpandableListDataPump.getData();
+        expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
+        expandableListAdapter = new CustomExpandableListAdapter(mContext, expandableListTitle, expandableListDetail);
+        expandableListView.setAdapter(expandableListAdapter);
+        expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+
+            @Override
+            public void onGroupExpand(int groupPosition) {
+                Toast.makeText(mContext,
+                        expandableListTitle.get(groupPosition) + " List Expanded.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+
+            @Override
+            public void onGroupCollapse(int groupPosition) {
+                Toast.makeText(mContext,
+                        expandableListTitle.get(groupPosition) + " List Collapsed.",
+                        Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v,
+                                        int groupPosition, int childPosition, long id) {
+                Toast.makeText(
+                        mContext,
+                        expandableListTitle.get(groupPosition)
+                                + " -> "
+                                + expandableListDetail.get(
+                                expandableListTitle.get(groupPosition)).get(
+                                childPosition), Toast.LENGTH_SHORT
+                ).show();
+                return false;
+            }
+        });
+
+
         // run the sentence in a new thread
         new Thread(new Runnable() {
             @Override
             public void run() {
                 List<Product> products = MainActivity.get().getDB().productDao().getAll();
                 boolean force = MainActivity.get().isForceUpdate();
-                if (force || products.isEmpty()) {
+                retrieveProducts();
+
+                /*if (force || products.isEmpty()) {
                     retrieveProducts();
                 } else {
                     populateProducts(products);
-                }
-                retrieveProducts();
+                }*/
 
             }
         }).start();
@@ -63,8 +122,22 @@ public class ResultFragment extends Fragment {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+    List<Product> list ;
+
+
     private void retrieveProducts() {
-        List<Product> list = new ArrayList<>();
+        /*list = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
             Product product = new Product();
@@ -76,11 +149,13 @@ public class ResultFragment extends Fragment {
         }
 
         // insert product list into database
-        MainActivity.get().getDB().productDao().insertAll(list);
+        MainActivity.get().getDB().productDao().insertAll(list);*/
 
         // disable flag for force update
         MainActivity.get().setForceUpdate(false);
-        populateProducts(list);
+        List<Product> list2 = new ArrayList<>();
+        list2 = MainActivity.get().getDB().productDao().getAll();
+        populateProducts(list2);
     }
 
     private void populateProducts(final List<Product> products) {

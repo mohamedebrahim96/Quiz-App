@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="60dp"
             android:gravity="center"
             >
             <TextView
@@ -51,6 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
+                android:id="@+id/exam_name"
                 fontPath="fonts/brownregular.ttf"
                 android:textColor="@color/white"
                 android:text="Data structure"/>
@@ -71,8 +72,9 @@
                 xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/webview"
                 android:layout_alignParentBottom="true"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_margin="10dp"
                 />
 
 
@@ -82,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="60dp"
             android:gravity="center"
             android:layout_alignParentRight="true"
             >
@@ -90,6 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="35sp"
+                android:id="@+id/points"
                 android:textColor="@color/white"
                 fontPath="fonts/airbnb.ttf"
                 android:text="23"/>
@@ -110,6 +113,7 @@
         android:orientation="vertical"
         android:id="@+id/buttonslayout"
         android:visibility="visible"
+        android:layout_marginBottom="20dp"
         android:layout_alignParentBottom="true"
         >
 
@@ -127,7 +131,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:id="@+id/btn1_layout"
             >
             <ImageButton
                 android:layout_width="50dp"
@@ -159,11 +163,10 @@
                 />
 
         </RelativeLayout>
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:id="@+id/btn2_layout"
             >
             <ImageButton
                 android:layout_width="50dp"
@@ -198,6 +201,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/btn3_layout"
 
             >
             <ImageButton
@@ -233,6 +237,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/btn4_layout"
 
             >
             <ImageButton
