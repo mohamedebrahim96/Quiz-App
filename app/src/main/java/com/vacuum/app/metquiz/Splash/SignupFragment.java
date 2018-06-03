@@ -1,6 +1,8 @@
 package com.vacuum.app.metquiz.Splash;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -11,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.vacuum.app.metquiz.MainActivity;
 import com.vacuum.app.metquiz.R;
 import com.vacuum.app.metquiz.Utils.RegisterAPI;
 
@@ -23,12 +26,15 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static android.content.Context.MODE_PRIVATE;
+import static com.vacuum.app.metquiz.Splash.SplashScreen.MY_PREFS_NAME;
+
 public class SignupFragment extends Fragment implements View.OnClickListener{
 
     final static String SIGNUP_FRAGMENT_TAG = "SIGNUP_FRAGMENT_TAG";
     private EditText cardnumber,email,password,fname,lname,phone,login_cardnumber,login_password;
     Button buttonRegister;
-    String ROOT_URL = "http://192.168.1.5/";
+    String ROOT_URL;
     Context mContext;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,6 +55,8 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
 
 
     private void insertUser() {
+        SharedPreferences prefs = mContext.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        ROOT_URL = prefs.getString("ip", "http://192.168.1.5/");
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ROOT_URL)
@@ -71,11 +79,14 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
                     String responsse ;
                     try {
                         responsse  = response.body().string();
-                        //System.out.println("====================================================");
-                        //System.out.println(responsse);
                         Log.e("TAG", responsse.toString());
-                        Toast.makeText(mContext,responsse, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext,"Registered Successfully", Toast.LENGTH_SHORT).show();
 
+                        SharedPreferences.Editor editor = mContext.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                        editor.putString("name",fname.getText().toString());
+                        editor.putString("email",email.getText().toString());
+                        editor.apply();
+                        skipSplash();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -109,6 +120,11 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-
+    private void skipSplash()
+    {
+        Intent i = new Intent(getActivity(), MainActivity.class);
+        startActivity(i);
+        getActivity().finish();
+    }
 
 }

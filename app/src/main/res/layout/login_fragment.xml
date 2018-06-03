@@ -70,7 +70,7 @@
                 <EditText
                     android:id="@+id/login_password"
                     android:layout_width="220dp"
-                    android:inputType="numberPassword"
+                    android:inputType="textPassword"
                     android:theme="@style/MyEditTextTheme"
                     android:layout_height="wrap_content"
                     android:textAlignment="textEnd"

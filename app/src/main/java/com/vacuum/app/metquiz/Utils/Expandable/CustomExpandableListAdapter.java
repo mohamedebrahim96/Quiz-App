@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.vacuum.app.metquiz.R;
@@ -48,6 +49,15 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
         }
         TextView expandedListTextView = (TextView) convertView
                 .findViewById(R.id.expandedListItem);
+        ImageView image_answer = (ImageView) convertView
+                .findViewById(R.id.image_answer);
+        if(expandedListPosition == 1){
+            image_answer.setImageResource(R.drawable.if_close_icon_dark_1398917);
+        }else if(expandedListPosition == 3){
+            image_answer.setImageResource(R.drawable.if_tick_mark_dark_1398912);
+        }else{
+            image_answer.setImageResource(0);
+        }
         expandedListTextView.setText(expandedListText);
         return convertView;
     }
@@ -84,6 +94,7 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
         }
         TextView listTitleTextView = (TextView) convertView
                 .findViewById(R.id.listTitle);
+
         listTitleTextView.setTypeface(null, Typeface.BOLD);
         listTitleTextView.setText(listTitle);
         return convertView;

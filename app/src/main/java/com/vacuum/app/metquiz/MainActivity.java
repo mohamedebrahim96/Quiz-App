@@ -518,6 +518,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void log_out() {
+        SharedPreferences preferences = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        preferences.edit().remove("login_cardnumber").commit();
         startActivity(new Intent(MainActivity.this, SplashScreen.class));
     }
 
