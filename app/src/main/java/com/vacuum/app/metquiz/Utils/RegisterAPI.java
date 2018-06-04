@@ -4,6 +4,7 @@ import android.widget.EditText;
 
 import com.vacuum.app.metquiz.Model.Example;
 import com.vacuum.app.metquiz.Model.QuestionModel;
+import com.vacuum.app.metquiz.Model.User;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -20,22 +21,31 @@ public interface RegisterAPI {
 
     @POST("metquiz/insert.php")
     @FormUrlEncoded
-    Call<ResponseBody> insertUser(@Field("cardnumber") String card_number,
+    Call<User> insertUser(@Field("card_id") String card_number,
                                    @Field("email") String email,
                                    @Field("password") String password,
                                    @Field("fname") String fname,
-                                   @Field("lname") String lname,
-                                   @Field("phone") String phone);
+                                  @Field("lname") String lname,
+                                  @Field("grade_id") int grade_id,
+                                  @Field("division_id") int division_id);
 
     @POST("/metquiz/login.php")
     @FormUrlEncoded
-    Call<ResponseBody> loging_user(@Field("cardnumber") String card_number,
-                                   @Field("password") String password);
+    Call<User> loging_user(@Field("card_id") String card_id,
+                           @Field("password") String password);
 
 
 
     @GET("/metquiz/getquestions.php")
     Call<Example> getQuestions();
+
+    @POST("metquiz/publish.php")
+    @FormUrlEncoded
+    Call<ResponseBody> publish(@Field("total_points") int total_points,
+                               @Field("correct_ans") int correct_ans,
+                               @Field("wrong_ans") int wrong_ans,
+                               @Field("student_id") int student_id,
+                               @Field("exam_id") int exam_id);
 
 
 }

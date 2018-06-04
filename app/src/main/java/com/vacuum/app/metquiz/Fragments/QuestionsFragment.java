@@ -1,6 +1,7 @@
 package com.vacuum.app.metquiz.Fragments;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -42,9 +43,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static android.content.Context.MODE_PRIVATE;
 import static com.vacuum.app.metquiz.MainActivity.TAG_QUESTIONS;
 import static com.vacuum.app.metquiz.MainActivity.activityTitles;
 import static com.vacuum.app.metquiz.MainActivity.navItemIndex;
+import static com.vacuum.app.metquiz.Splash.SplashScreen.MY_PREFS_NAME;
 
 /**
  * Created by Home on 11/28/2017.
@@ -53,17 +56,20 @@ import static com.vacuum.app.metquiz.MainActivity.navItemIndex;
 public class QuestionsFragment extends Fragment implements View.OnClickListener{
 
     WebView mWebView;
-    String ROOT_URL = "http://192.168.1.6/";
+    String ROOT_URL ;
     List<QuestionModel> questions ;
     TextView question_count,question,text_btn1,text_btn2,text_btn3,text_btn4,points,exam_name,total_score;
     LinearLayout buttonslayout;
     RelativeLayout result_layout,btn1_layout,btn2_layout,btn3_layout,btn4_layout;
     Button btn1,btn2,btn3,btn4,home;
     public static int x = 0;
-    int timer_number,points_number,total_questions_dgreee;
+    int timer_number,points_number,total_questions_points;
     static String correct;
     Context mContext;
+    int number_of_questions,student_id;
     static int degree = 0;
+    CountDownTimer countDownTimer;
+    static int correct_ans;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -151,6 +157,10 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
 
     private void setup_questions() {
 
+        SharedPreferences prefs = mContext.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        ROOT_URL = prefs.getString("ip", "http://192.168.1.5/");
+        student_id = Integer.parseInt(prefs.getString("student_id","911"));
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ROOT_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -161,9 +171,7 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
             @Override
             public void onResponse(Call<Example> call, Response<Example> response) {
 
-
                 questions = new ArrayList<>();
-
                 for (QuestionModel fruit : response.body().getQuestionModel()) {
                     questions.add(fruit);
                 }
@@ -171,19 +179,17 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
                 //points.setText(String.valueOf(response.body().getPoints()));
                 timer_number = response.body().getTimer();
                 exam_name.setText(response.body().getExam_name());
-                total_questions_dgreee = questions.size() * points_number;
+                total_questions_points = questions.size() * points_number;
+                number_of_questions = questions.size();
                 quesion_setup();
                 counter();
-
             }
-
             @Override
             public void onFailure(Call<Example> call, Throwable t) {
                 Log.e("TAG",t.toString());
             }
         });
     }
-
     private void quesion_setup() {
         buttonslayout.setVisibility(View.GONE);
         final Handler handler = new Handler();
@@ -203,7 +209,6 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
                         btn3_layout.setVisibility(View.GONE);
                     if(questions.get(x).getAns4() == "")
                         btn4_layout.setVisibility(View.GONE);
-
                         text_btn1.setText(questions.get(x).getAns1());
                         text_btn2.setText(questions.get(x).getAns2());
                         text_btn3.setText(questions.get(x).getAns3());
@@ -225,24 +230,28 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
             case R.id.btn1:
                 if(text_btn1.getText().toString().equals(correct)){
                     degree  = degree + points_number;
+                    correct_ans++;
                 }
                 quesion_setup();
                 break;
             case R.id.btn2:
                 if(text_btn2.getText().toString().equals(correct)){
                     degree  = degree + points_number;
+                    correct_ans++;
                 }
                 quesion_setup();
                 break;
             case R.id.btn3:
                 if(text_btn3.getText().toString().equals(correct)){
                     degree  = degree + points_number;
+                    correct_ans++;
                 }
                 quesion_setup();
                 break;
             case R.id.btn4:
                 if(text_btn4.getText().toString().equals(correct)){
                     degree  = degree + points_number;
+                    correct_ans++;
                 }
                 quesion_setup();
               break;
@@ -251,8 +260,7 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
     }
 
     private void counter() {
-        new CountDownTimer(timer_number*10000, 1000) {
-
+        countDownTimer = new CountDownTimer(timer_number*10000, 1000) {
             public void onTick(long millisUntilFinished) {
                 points.setText(String.valueOf(millisUntilFinished / 1000));
             }
@@ -263,14 +271,44 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
     }
 
     private void finish_answers() {
-        total_score.setText(total_questions_dgreee + "/"+degree);
+        total_score.setText(total_questions_points + "/"+degree);
         result_layout.setVisibility(View.VISIBLE);
+        countDownTimer.cancel();
+        publish_answer();
         new Thread(new Runnable() {
             @Override
             public void run() {
                 retrieveProducts();
             }
         }).start();
+    }
+
+    private void publish_answer() {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(ROOT_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        RegisterAPI api = retrofit.create(RegisterAPI.class);
+        api.publish(
+                degree,
+                correct_ans,
+                (number_of_questions-correct_ans),
+               student_id,
+                5).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    Toast.makeText(mContext, response.body().string(), Toast.LENGTH_SHORT).show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.e("TAG", "insertUser():: Unable to submit post to API.");
+            }
+        });
     }
 
 
@@ -286,10 +324,8 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
             Log.e("TAG",product.getImageUrl().toString());
             list.add(product);
         }
-
         // insert product list into database
         MainActivity.get().getDB().productDao().insertAll(list);
-
         // disable flag for force update
         MainActivity.get().setForceUpdate(false);
     }

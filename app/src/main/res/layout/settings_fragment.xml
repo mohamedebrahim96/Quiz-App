@@ -293,7 +293,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:text="192.168.1."
+            android:text="192.168."
             android:id="@+id/ip"
             android:textSize="16sp" />
 
@@ -305,7 +305,7 @@
             android:id="@+id/edittext_ip"
             android:layout_toRightOf="@+id/ip"
             android:inputType="numberDecimal"
-            android:text="6"
+            android:text="255.255"
             fontPath="fonts/airbnb.ttf"
             android:textSize="16sp"
             style="@style/Base.TextAppearance.AppCompat.Large"

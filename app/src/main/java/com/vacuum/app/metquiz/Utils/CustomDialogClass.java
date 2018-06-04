@@ -68,7 +68,7 @@ public class CustomDialogClass extends Dialog{
     }
 
     private void Done() {
-        editor.putString("ip", "http://192.168.1."+ edittext_ip2.getText().toString()+ "/" );
+        editor.putString("ip", "http://192.168."+ edittext_ip2.getText().toString()+ "/" );
         editor.apply();
         dismiss();
     }

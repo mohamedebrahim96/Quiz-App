@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vacuum.app.metquiz.MainActivity;
+import com.vacuum.app.metquiz.Model.User;
 import com.vacuum.app.metquiz.NavigationDrawer.PrivacyPolicyActivity;
 import com.vacuum.app.metquiz.R;
 import com.vacuum.app.metquiz.Utils.RegisterAPI;
@@ -128,35 +129,33 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
         api.loging_user(
                 login_cardnumber.getText().toString(),
                 login_password.getText().toString()
-        ).enqueue(new Callback<ResponseBody>() {
+        ).enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(Call<User> call, Response<User> response) {
 
                 if(response.isSuccessful()) {
-                    String responsse ;
-                    try {
-                        responsse  = response.body().string();
-                        //System.out.println("====================================================");
-                        //System.out.println(responsse);
-                        Toast.makeText(mContext,responsse, Toast.LENGTH_SHORT).show();
-                        //Log.e("TAG", responsse.toString());
+                    User u = response.body();
 
-                        if (responsse.equals("Login Successfully")){
-                            SharedPreferences.Editor editor = mContext.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-                            editor.putString("login_cardnumber",login_cardnumber.getText().toString());
-                            editor.putString("login_password",login_password.getText().toString());
-                            editor.apply();
-                            skipSplash();
-                        }
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    //System.out.println("====================================================");
+                    //System.out.println(responsse);
+                    Toast.makeText(mContext,"Hello, "+u.getFname(), Toast.LENGTH_SHORT).show();
+                    //Log.e("TAG", responsse.toString());
+                    SharedPreferences.Editor editor = mContext.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                    editor.putString("student_id",u.getStudentId());
+                    editor.putString("card_id",u.getCardId());
+                    editor.putString("email",u.getEmail());
+                    editor.putString("password",u.getPassword());
+                    editor.putString("fname",u.getFname());
+                    editor.putString("lname",u.getLname());
+                    editor.putInt("grade_id",Integer.parseInt(u.getGradeId()));
+                    editor.putInt("division_id",Integer.parseInt(u.getDivisionId()));
+                    editor.apply();
+                    skipSplash();
                 }
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(Call<User> call, Throwable t) {
                 Log.e("TAG", "Unable to submit post to API.");
             }
         });

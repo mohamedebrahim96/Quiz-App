@@ -152,11 +152,10 @@ public class SettingsFragment extends Fragment implements CompoundButton.OnCheck
             startActivity(new Intent(mContext, TermsConditions.class));
             getActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }
-
     }
 
     private void Done(View view) {
-        editor.putString("ip", "http://192.168.1."+ edittext_ip.getText().toString()+ "/" );
+        editor.putString("ip", "http://192.168."+ edittext_ip.getText().toString()+ "/" );
         editor.apply();
         View view2 = getActivity().getCurrentFocus();
         if (view2 != null) {
