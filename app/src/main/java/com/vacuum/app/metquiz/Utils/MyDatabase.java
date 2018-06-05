@@ -22,7 +22,7 @@ public abstract class MyDatabase extends RoomDatabase {
         @Override
         public void migrate(SupportSQLiteDatabase database) {
             database.execSQL("ALTER TABLE product "
-                    + " ADD COLUMN price INTEGER");
+                    + " ADD COLUMN total_correct_answers INTEGER");
 
             // enable flag to force update products
             MainActivity.get().setForceUpdate(true);

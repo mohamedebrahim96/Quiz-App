@@ -163,7 +163,7 @@ public class ResultFragment extends Fragment {
             @Override
             public void run() {
                 Log.e("TAG","Set adabpter ================================");
-                LinearLayoutManager llm = new GridLayoutManager(mContext,3);
+                LinearLayoutManager llm = new LinearLayoutManager(mContext);
                 recyclerView.setLayoutManager(llm);
                 recyclerView.setAdapter(new ProductAdapter(products));
             }

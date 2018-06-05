@@ -125,7 +125,7 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
                 email.getText().toString(),
                 password.getText().toString(),
                 fname.getText().toString(),
-                "",
+                "hh",
                 grade_id,
                 division_id
         ).enqueue(new Callback<User>() {

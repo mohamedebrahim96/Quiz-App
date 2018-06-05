@@ -20,8 +20,8 @@ public interface ProductDao {
     @Query("SELECT * FROM product")
     List<com.vacuum.app.metquiz.Model.Product> getAll();
 
-    @Query("SELECT * FROM product WHERE name LIKE :name LIMIT 1")
-    com.vacuum.app.metquiz.Model.Product findByName(String name);
+    @Query("SELECT * FROM product WHERE question LIKE :question LIMIT 1")
+    com.vacuum.app.metquiz.Model.Product findByName(String question);
 
     @Insert
     void insertAll(List<com.vacuum.app.metquiz.Model.Product> products);
@@ -31,4 +31,6 @@ public interface ProductDao {
 
     @Delete
     void delete(Product product);
+
+
 }

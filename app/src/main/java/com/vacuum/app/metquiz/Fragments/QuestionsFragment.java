@@ -56,18 +56,18 @@ import static com.vacuum.app.metquiz.Splash.SplashScreen.MY_PREFS_NAME;
 public class QuestionsFragment extends Fragment implements View.OnClickListener{
 
     WebView mWebView;
-    String ROOT_URL ;
     List<QuestionModel> questions ;
     TextView question_count,question,text_btn1,text_btn2,text_btn3,text_btn4,points,exam_name,total_score;
     LinearLayout buttonslayout;
     RelativeLayout result_layout,btn1_layout,btn2_layout,btn3_layout,btn4_layout;
     Button btn1,btn2,btn3,btn4,home;
     public static int x = 0;
-    int timer_number,points_number,total_questions_points;
+    int exam_duration,points_number,total_questions_points;
     static String correct;
     Context mContext;
     int number_of_questions,student_id;
     static int degree = 0;
+    String exam_start_date,exam_name2,ROOT_URL;
     CountDownTimer countDownTimer;
     static int correct_ans;
 
@@ -175,10 +175,13 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
                 for (QuestionModel fruit : response.body().getQuestionModel()) {
                     questions.add(fruit);
                 }
+                exam_start_date = response.body().getStartDate();
+
                 points_number = response.body().getPoints();
                 //points.setText(String.valueOf(response.body().getPoints()));
-                timer_number = response.body().getTimer();
-                exam_name.setText(response.body().getExam_name());
+                exam_duration = Integer.parseInt(response.body().getExamDuration());
+                exam_name.setText(response.body().getExamName());
+                exam_name2 = response.body().getExamName();
                 total_questions_points = questions.size() * points_number;
                 number_of_questions = questions.size();
                 quesion_setup();
@@ -260,7 +263,7 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
     }
 
     private void counter() {
-        countDownTimer = new CountDownTimer(timer_number*10000, 1000) {
+        countDownTimer = new CountDownTimer(exam_duration*100000, 1000) {
             public void onTick(long millisUntilFinished) {
                 points.setText(String.valueOf(millisUntilFinished / 1000));
             }
@@ -278,7 +281,7 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
         new Thread(new Runnable() {
             @Override
             public void run() {
-                retrieveProducts();
+                AddProducts();
             }
         }).start();
     }
@@ -313,17 +316,23 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
 
 
     List<Product> list ;
-    private void retrieveProducts() {
+    private void AddProducts() {
         list = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++) {
-            Product product = new Product();
-            product.setName(getString(R.string.name_format, String.valueOf(i))+"WorldFuck");
-            product.setImageUrl("https://picsum.photos/500/500?image" + i);
-            product.setPrice(i == 0 ? 50 : i * 100);
-            Log.e("TAG",product.getImageUrl().toString());
-            list.add(product);
-        }
+        Product product = new Product();
+        product.setQuestion(questions.get(0).getQuestion());
+        product.setAns1(questions.get(0).getAns1());
+        product.setAns2(questions.get(0).getAns2());
+        product.setAns3(questions.get(0).getAns3());
+        product.setAns4(questions.get(0).getAns4());
+        product.setCorrect_ans(questions.get(0).getCorrectAns());
+        product.setExam_start_date(exam_start_date);
+        product.setDegree(String.valueOf(degree));
+        product.setTotal_correct_answers(correct_ans);
+        product.setExam_name(exam_name2);
+
+        Log.e("TAG",product.getQuestion().toString());
+        list.add(product);
         // insert product list into database
         MainActivity.get().getDB().productDao().insertAll(list);
         // disable flag for force update

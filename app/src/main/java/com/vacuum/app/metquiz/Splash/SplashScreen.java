@@ -43,7 +43,7 @@ public class SplashScreen extends AppCompatActivity {
 
     private void remmber_me() {
         prefs = mContext.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-        String remmber = prefs.getString("login_cardnumber",null);
+        String remmber = prefs.getString("card_id",null);
         if (remmber != null){
             Intent i = new Intent(mContext, MainActivity.class);
             startActivity(i);

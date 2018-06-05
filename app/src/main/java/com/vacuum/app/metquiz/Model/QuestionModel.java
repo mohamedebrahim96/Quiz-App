@@ -5,13 +5,13 @@ import com.google.gson.annotations.SerializedName;
 
 public class QuestionModel {
 
-
     @SerializedName("questions_id")
     @Expose
     private String questionsId;
     @SerializedName("question")
     @Expose
     private String question;
+
     @SerializedName("ans1")
     @Expose
     private String ans1;
@@ -24,9 +24,16 @@ public class QuestionModel {
     @SerializedName("ans4")
     @Expose
     private String ans4;
+
     @SerializedName("correct_ans")
     @Expose
     private String correctAns;
+
+
+
+
+
+
 
     public String getQuestionsId() {
         return questionsId;
@@ -83,4 +90,5 @@ public class QuestionModel {
     public void setCorrectAns(String correctAns) {
         this.correctAns = correctAns;
     }
+
 }

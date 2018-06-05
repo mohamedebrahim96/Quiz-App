@@ -9,23 +9,51 @@ public class Example {
 
     @SerializedName("exam_name")
     @Expose
-    private String exam_name = null;
-
+    private String examName;
     @SerializedName("start_date")
     @Expose
-    private String start_date = null;
-
-    @SerializedName("timer")
+    private String startDate;
+    @SerializedName("exam_duration")
     @Expose
-    private int timer ;
-
+    private String examDuration;
     @SerializedName("points")
     @Expose
-    private int points ;
-
+    private Integer points;
     @SerializedName("QuestionModel")
     @Expose
     private List<QuestionModel> questionModel = null;
+
+    public String getExamName() {
+        return examName;
+    }
+
+    public void setExamName(String examName) {
+        this.examName = examName;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getExamDuration() {
+        return examDuration;
+    }
+
+    public void setExamDuration(String examDuration) {
+        this.examDuration = examDuration;
+    }
+
+    public Integer getPoints() {
+        return points;
+    }
+
+    public void setPoints(Integer points) {
+        this.points = points;
+    }
 
     public List<QuestionModel> getQuestionModel() {
         return questionModel;
@@ -33,37 +61,5 @@ public class Example {
 
     public void setQuestionModel(List<QuestionModel> questionModel) {
         this.questionModel = questionModel;
-    }
-
-    public String getExam_name() {
-        return exam_name;
-    }
-
-    public void setExam_name(String exam_name) {
-        this.exam_name = exam_name;
-    }
-
-    public String getStart_date() {
-        return start_date;
-    }
-
-    public void setStart_date(String start_date) {
-        this.start_date = start_date;
-    }
-
-    public int getTimer() {
-        return timer;
-    }
-
-    public void setTimer(int timer) {
-        this.timer = timer;
-    }
-
-    public int getPoints() {
-        return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
     }
 }

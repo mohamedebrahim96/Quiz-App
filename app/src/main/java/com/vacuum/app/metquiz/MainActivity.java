@@ -311,7 +311,7 @@ public class MainActivity extends AppCompatActivity {
         // name, website
 
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-        String name = prefs.getString("name", "@mohamedebrahim96");//"No name defined" is the default value.
+        String name = prefs.getString("fname", "@mohamedebrahim96");//"No name defined" is the default value.
         String email = prefs.getString("email", "ebrahimm132@gmail.com");
         String imageurl = prefs.getString("imageurl", "https://avatars2.githubusercontent.com/u/16405013?s=460&v=4");
         String cover = prefs.getString("cover", "defaultStringIfNothingFound");
@@ -519,7 +519,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void log_out() {
         SharedPreferences preferences = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-        preferences.edit().remove("login_cardnumber").commit();
+        preferences.edit().remove("card_id").commit();
         startActivity(new Intent(MainActivity.this, SplashScreen.class));
     }
 

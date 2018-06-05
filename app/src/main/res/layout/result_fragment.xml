@@ -6,18 +6,10 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="result Fragment"
-        android:textSize="40dp"
-        android:textStyle="bold"
-        android:gravity="center"
-        />
 
     <ExpandableListView
         android:id="@+id/expandableListView"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
         android:divider="@android:color/darker_gray"
@@ -27,7 +19,7 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/darker_gray"
+        android:background="@android:color/white"
         tools:listitem="@layout/recyclerview_item" />
 
 </LinearLayout>

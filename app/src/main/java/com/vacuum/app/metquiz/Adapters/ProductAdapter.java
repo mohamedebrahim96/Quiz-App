@@ -40,19 +40,35 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     static class ProductViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView image;
-        private TextView name;
+        private TextView question,total_correct_answers2,exam_start_date,degree,exam_name,correct_ans,ans1,ans3,ans2,ans4;
 
         public ProductViewHolder(View itemView) {
             super(itemView);
-            image = itemView.findViewById(R.id.product_image);
-            name = itemView.findViewById(R.id.product_name);
+            question = itemView.findViewById(R.id.question);
+            ans1 = itemView.findViewById(R.id.ans1);
+            ans2 = itemView.findViewById(R.id.ans2);
+            ans3 = itemView.findViewById(R.id.ans3);
+            ans4 = itemView.findViewById(R.id.ans4);
+            correct_ans = itemView.findViewById(R.id.correct_ans);
+            exam_name = itemView.findViewById(R.id.exam_name);
+            degree = itemView.findViewById(R.id.degree);
+            exam_start_date = itemView.findViewById(R.id.exam_start_date);
+            total_correct_answers2 = itemView.findViewById(R.id.total_correct_answers2);
+
         }
 
         public void bind(Product product) {
-            String price = itemView.getContext().getString(R.string.price_format, String.valueOf(product.getPrice()));
-            name.setText(product.getName() + "-" + price);
-            Picasso.with(itemView.getContext()).load(product.getImageUrl()).into(image);
+            question.setText("Question: "+product.getQuestion());
+            ans1.setText("Answer1: "+product.getAns1());
+            ans2.setText("Answer2: "+product.getAns2());
+            ans3.setText("Answer3: "+product.getAns3());
+            ans4.setText("Answer4: "+product.getAns4());
+            correct_ans.setText("Correct: "+product.getCorrect_ans());
+            exam_name.setText(product.getExam_name());
+            degree.setText(product.getDegree());
+            exam_start_date.setText(product.getExam_start_date());
+            total_correct_answers2.setText(String.valueOf(product.getTotal_correct_answers()));
+
         }
     }
 
