@@ -8,6 +8,7 @@
 [![Build Status][travis-image]][https://travis-ci.org/dbader/node-datadog-metrics]
 [![Downloads Stats][npm-downloads]][npm-url]
 
+[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
 [npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/datadog-metrics
