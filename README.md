@@ -1,3 +1,10 @@
+
+
+
+[![NPM Version][npm-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
+[![Downloads Stats][npm-downloads]][npm-url]
+
 Quiz App
 ========
 Welcome to QuizApp's open source Android app! Come on in, take your shoes
@@ -5,8 +12,9 @@ off, stay a while explore how examination's 's native squad has built and
 continues to build the app, _discover_ our implementation of [RxJava](https://github.com/ReactiveX/RxJava) in logic-
 filled [view models](https://github.com/mohamedebrahim96/MET-Quiz),
 and maybe even create an issue or two.
+Short blurb about what your product does.
 
-_Quiz android app for my collage ...and it's my graduation project_
+> _Quiz android app for my collage ...and it's my graduation project_
 
 
 
@@ -56,8 +64,7 @@ Features
 
 
 # Screenshots
-<img src="https://github.com/mohamedebrahim96/Quiz-App/raw/master/files/screenshots/Android%20App/device-2018-06-09-003821.png" width="250"><img src="https://github.com/mohamedebrahim96/Quiz-App/raw/master/files/screenshots/Android%20App/device-2018-06-09-004017.png" width="250"><img src="https://github.com/mohamedebrahim96/Quiz-App/raw/master/files/screenshots/Android%20App/device-2018-06-09-004332.png" width="250"><img src="https://github.com/mohamedebrahim96/Quiz-App/raw/master/files/screenshots/Android%20App/device-2018-06-09-004515.png" width="250"><img src="https://github.com/mohamedebrahim96/Quiz-App/raw/master/files/screenshots/Android%20App/34384048_1733282310086755_3229344794140475392_n.jpg" width="250"><img src="https://github.com/mohamedebrahim96/Quiz-App/raw/master/files/screenshots/Android%20App/34394812_1733282236753429_6339434315159437312_n.jpg" width="250"><img src="https://github.com/mohamedebrahim96/Quiz-App/raw/master/files/screenshots/Android%20App/34473973_1733282786753374_571604875163467776_n.jpg" width="250">
-
+<img src="https://github.com/mohamedebrahim96/Quiz-App/raw/master/files/screenshots/Android%20App/device-2018-06-09-003821.png" width="250"><img src="https://github.com/mohamedebrahim96/Quiz-App/raw/master/files/screenshots/Android%20App/device-2018-06-09-004017.png" width="250"><img src="https://github.com/mohamedebrahim96/Quiz-App/raw/master/files/screenshots/Android%20App/device-2018-06-09-004332.png" width="250"><img src="https://github.com/mohamedebrahim96/Quiz-App/raw/master/files/screenshots/Android%20App/device-2018-06-09-004515.png" width="250"><img src="https://github.com/mohamedebrahim96/Quiz-App/raw/master/files/screenshots/Android%20App/34384048_1733282310086755_3229344794140475392_n.jpg" width="250"><img src="https://github.com/mohamedebrahim96/Quiz-App/raw/master/files/screenshots/Android%20App/34394812_1733282236753429_6339434315159437312_n.jpg" width="250"><img src="https://github.com/mohamedebrahim96/Quiz-App/raw/master/files/screenshots/Android%20App/34473973_1733282786753374_571604875163467776_n.jpg" width="250"><img src="https://github.com/mohamedebrahim96/Quiz-App/raw/master/files/screenshots/Android%20App/34345878_1733282513420068_1772792702551719936_n.jpg" width="250">
 
 
 
