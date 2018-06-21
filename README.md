@@ -129,15 +129,19 @@ color palette
 
 
 
-#Supported Devices
+## Supported Devices
+```sh
 * android Kitkat 4.4.2 (API-19)
 * android Lollipop 5.0/5.1(API-21)
 * android Marshmallow (API-23)
 * android nougat 7.0 (API-24)
 * android tablets 
+```
 
 
-#Third-party
+
+## Third-party
+```sh
 * Room Persistence Library V1.1.0
 * espresso-core:3.0.1 (https://github.com/chiuki/espresso-samples)
 * picasso 2.3.2 (https://github.com/square/picasso)
@@ -147,6 +151,8 @@ color palette
 * Retrofit 2.4.0 (https://github.com/square/retrofit)
 * Glide 4.2.0 (https://github.com/bumptech/glide)
 * Jsoup 1.10.3 (https://github.com/jhy/jsoup)
+```
+
 
 ## Release History
 
