@@ -65,9 +65,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             ans4.setText("Answer4: "+product.getAns4());
             correct_ans.setText("Correct: "+product.getCorrect_ans());
             exam_name.setText(product.getExam_name());
-            degree.setText(product.getDegree());
-            exam_start_date.setText(product.getExam_start_date());
-            total_correct_answers2.setText(String.valueOf(product.getTotal_correct_answers()));
+            degree.setText("Degree: "+product.getDegree());
+            exam_start_date.setText("Date: "+product.getExam_start_date());
+            total_correct_answers2.setText("Correct answers: "+String.valueOf(product.getTotal_correct_answers()));
 
         }
     }

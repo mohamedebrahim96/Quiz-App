@@ -45,6 +45,7 @@ public interface RegisterAPI {
                                @Field("correct_ans") int correct_ans,
                                @Field("wrong_ans") int wrong_ans,
                                @Field("student_id") int student_id,
+                               @Field("division_id") int division_id,
                                @Field("exam_id") int exam_id);
 
 

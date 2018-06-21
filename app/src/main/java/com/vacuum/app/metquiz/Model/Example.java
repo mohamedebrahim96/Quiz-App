@@ -6,6 +6,9 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class Example {
+    @SerializedName("exam_id")
+    @Expose
+    private String exam_id;
 
     @SerializedName("exam_name")
     @Expose
@@ -61,5 +64,13 @@ public class Example {
 
     public void setQuestionModel(List<QuestionModel> questionModel) {
         this.questionModel = questionModel;
+    }
+
+    public String getExam_id() {
+        return exam_id;
+    }
+
+    public void setExam_id(String exam_id) {
+        this.exam_id = exam_id;
     }
 }

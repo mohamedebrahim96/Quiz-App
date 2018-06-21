@@ -54,7 +54,7 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
         email =  view.findViewById(R.id.email);
         password =  view.findViewById(R.id.password);
         fname =  view.findViewById(R.id.fname);
-        //lname =  view.findViewById(R.id.lname);
+        lname =  view.findViewById(R.id.lname);
         buttonRegister =  view.findViewById(R.id.buttonRegister);
         spinner_grad= view.findViewById(R.id.spinner_grad);
         spinner_division= view.findViewById(R.id.spinner_division);
@@ -125,7 +125,7 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
                 email.getText().toString(),
                 password.getText().toString(),
                 fname.getText().toString(),
-                "hh",
+                lname.getText().toString(),
                 grade_id,
                 division_id
         ).enqueue(new Callback<User>() {
@@ -137,17 +137,16 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
                         Toast.makeText(mContext,"Registered Successfully", Toast.LENGTH_SHORT).show();
 
                         SharedPreferences.Editor editor = mContext.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-                        editor.putString("student_id",u.getCardId());
+                        editor.putString("student_id",u.getStudentId());
                         editor.putString("card_id",u.getCardId());
                         editor.putString("email",u.getEmail());
                         editor.putString("password",u.getPassword());
-                        editor.putString("fname",u.getFname());
+                        editor.putString("fname",u.getFname()+" " +u.getLname());
                         editor.putString("lname",u.getLname());
                         editor.putInt("grade_id",Integer.parseInt(u.getGradeId()));
                         editor.putInt("division_id",Integer.parseInt(u.getDivisionId()));
                         editor.apply();
                         skipSplash();
-
                 }
             }
 

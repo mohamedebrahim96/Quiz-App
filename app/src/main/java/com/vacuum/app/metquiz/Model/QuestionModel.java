@@ -25,15 +25,13 @@ public class QuestionModel {
     @Expose
     private String ans4;
 
+    @SerializedName("question_points")
+    @Expose
+    private String question_points;
+
     @SerializedName("correct_ans")
     @Expose
     private String correctAns;
-
-
-
-
-
-
 
     public String getQuestionsId() {
         return questionsId;
@@ -91,4 +89,12 @@ public class QuestionModel {
         this.correctAns = correctAns;
     }
 
+
+    public String getQuestion_points() {
+        return question_points;
+    }
+
+    public void setQuestion_points(String question_points) {
+        this.question_points = question_points;
+    }
 }
