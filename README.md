@@ -1,9 +1,18 @@
 
 
 
+# Product Name
+> Short blurb about what your product does.
+
 [![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
+[![Build Status][travis-image]][https://travis-ci.org/dbader/node-datadog-metrics]
 [![Downloads Stats][npm-downloads]][npm-url]
+
+[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
+[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/datadog-metrics
+[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
+
 
 Quiz App
 ========
