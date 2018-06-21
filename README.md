@@ -129,6 +129,63 @@ color palette
 
 
 
+#Supported Devices
+* android Kitkat 4.4.2 (API-19)
+* android Lollipop 5.0/5.1(API-21)
+* android Marshmallow (API-23)
+* android nougat 7.0 (API-24)
+* android tablets 
+
+
+#Third-party
+* Room Persistence Library V1.1.0
+* espresso-core:3.0.1 (https://github.com/chiuki/espresso-samples)
+* picasso 2.3.2 (https://github.com/square/picasso)
+* Calligraphy 2.3.0 (https://github.com/chrisjenx/Calligraphy)
+* SwitchButton 2.0.0 (https://github.com/kyleduo/SwitchButton)
+* Slider 1.1.5 (https://github.com/daimajia/AndroidImageSlider)
+* Retrofit 2.4.0 (https://github.com/square/retrofit)
+* Glide 4.2.0 (https://github.com/bumptech/glide)
+* Jsoup 1.10.3 (https://github.com/jhy/jsoup)
+
+## Release History
+
+* 0.2.1
+   * updating Exam layers and layouts.
+   * make some improvements and enhancement.
+   * upload results on the server.
+   * make the android app repo on Github.com
+* 0.2.0
+    * add a local Database (Room).
+* 0.1.1
+    * Fix some bugs.
+    * new Activitys new layouts.
+* 0.1.0
+    * add advanced settings of the user to add ip etc..
+    * add login&signup layouts/fragmnts.
+* 0.0.1
+    * Add exam timers and points.
+
+
+
+## Updates log
+
+* april 29, 2018
+   -updating Exam layers and layouts.
+   -make some improvements and enhancement.
+   -upload results on the server.
+   -make the android app repo on Github.com
+* mar 9, 2018
+     -add a local Database (Room).
+     -store the results and view them
+* Sep 26, 2017
+     -Fix some bugs.
+     -new Activitys new layouts.
+* Aug 29, 2017
+     -add advanced settings of the user to add ip etc..
+     -add login&signup layouts/fragmnts.
+* Apr 4, 2014
+      -Add exam timers and points.
 
 
 
