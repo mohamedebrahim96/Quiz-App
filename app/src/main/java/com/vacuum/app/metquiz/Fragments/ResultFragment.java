@@ -104,7 +104,6 @@ public class ResultFragment extends Fragment {
         list2 = MainActivity.get().getDB().productDao().getAll();
         populateProducts(list2);
     }
-
     private void populateProducts(final List<Product> products) {
         getActivity().runOnUiThread(new Runnable() {
             @Override
@@ -116,5 +115,4 @@ public class ResultFragment extends Fragment {
             }
         });
     }
-
 }
