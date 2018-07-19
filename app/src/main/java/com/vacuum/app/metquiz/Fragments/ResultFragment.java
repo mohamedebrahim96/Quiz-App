@@ -13,15 +13,12 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
-
-
 import com.vacuum.app.metquiz.Adapters.ProductAdapter;
 import com.vacuum.app.metquiz.MainActivity;
 import com.vacuum.app.metquiz.Model.Product;
 import com.vacuum.app.metquiz.R;
 import com.vacuum.app.metquiz.Utils.Expandable.CustomExpandableListAdapter;
 import com.vacuum.app.metquiz.Utils.Expandable.ExpandableListDataPump;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
