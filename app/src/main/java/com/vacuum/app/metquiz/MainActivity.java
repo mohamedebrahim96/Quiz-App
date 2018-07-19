@@ -86,18 +86,13 @@ public class MainActivity extends AppCompatActivity {
     private static final String DATABASE_NAME = "MyDatabase";
     private static final String PREFERENCES = "RoomDemo.preferences";
     private static final String KEY_FORCE_UPDATE = "force_update";
-
     private MyDatabase database;
-
     public static MainActivity get() {
         return INSTANCE;
     }
-
-
     public MyDatabase getDB() {
         return database;
     }
-
     public boolean isForceUpdate() {
         return getSP().getBoolean(KEY_FORCE_UPDATE, true);
     }
@@ -522,8 +517,6 @@ public class MainActivity extends AppCompatActivity {
         preferences.edit().remove("card_id").commit();
         startActivity(new Intent(MainActivity.this, SplashScreen.class));
     }
-
-
 
     private void applyFontToMenuItem(MenuItem mi) {
 
