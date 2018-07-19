@@ -48,9 +48,6 @@ public class ResultFragment extends Fragment {
 
         mContext = this.getActivity();
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-
-
-
         expandableListView = (ExpandableListView) view.findViewById(R.id.expandableListView);
         expandableListDetail = ExpandableListDataPump.getData();
         expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
