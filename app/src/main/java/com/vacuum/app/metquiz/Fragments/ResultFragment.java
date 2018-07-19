@@ -62,7 +62,6 @@ public class ResultFragment extends Fragment {
                         Toast.LENGTH_SHORT).show();
             }
         });
-
         expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
 
             @Override
@@ -73,7 +72,6 @@ public class ResultFragment extends Fragment {
 
             }
         });
-
         expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
@@ -89,8 +87,6 @@ public class ResultFragment extends Fragment {
                 return false;
             }
         });
-
-
         // run the sentence in a new thread
         new Thread(new Runnable() {
             @Override
@@ -98,13 +94,6 @@ public class ResultFragment extends Fragment {
                 List<Product> products = MainActivity.get().getDB().productDao().getAll();
                 boolean force = MainActivity.get().isForceUpdate();
                 retrieveProducts();
-
-                /*if (force || products.isEmpty()) {
-                    retrieveProducts();
-                } else {
-                    populateProducts(products);
-                }*/
-
             }
         }).start();
         return view;
