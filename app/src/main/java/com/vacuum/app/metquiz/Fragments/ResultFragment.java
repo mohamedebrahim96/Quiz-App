@@ -91,32 +91,14 @@ public class ResultFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                List<Product> products = MainActivity.get().getDB().productDao().getAll();
-                boolean force = MainActivity.get().isForceUpdate();
+                //List<Product> products = MainActivity.get().getDB().productDao().getAll();
+                //boolean force = MainActivity.get().isForceUpdate();
                 retrieveProducts();
             }
         }).start();
         return view;
     }
-
-
-
     private void retrieveProducts() {
-        /*list = new ArrayList<>();
-
-        for (int i = 0; i < 10; i++) {
-            Product product = new Product();
-            product.setName(getString(R.string.name_format, String.valueOf(i)));
-            product.setImageUrl("https://picsum.photos/500/500?image=" + i);
-            product.setPrice(i == 0 ? 50 : i * 100);
-            Log.e("TAG",product.getImageUrl().toString());
-            list.add(product);
-        }
-
-        // insert product list into database
-        MainActivity.get().getDB().productDao().insertAll(list);*/
-
-        // disable flag for force update
         MainActivity.get().setForceUpdate(false);
         List<Product> list2 = new ArrayList<>();
         list2 = MainActivity.get().getDB().productDao().getAll();
