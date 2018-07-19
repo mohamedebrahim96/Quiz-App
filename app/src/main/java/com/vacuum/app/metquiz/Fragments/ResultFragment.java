@@ -101,21 +101,6 @@ public class ResultFragment extends Fragment {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    List<Product> list ;
-
-
     private void retrieveProducts() {
         /*list = new ArrayList<>();
 
