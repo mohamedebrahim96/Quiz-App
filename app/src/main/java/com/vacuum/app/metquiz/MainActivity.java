@@ -158,17 +158,6 @@ public class MainActivity extends AppCompatActivity {
                 setToolbarTitle();
             }
         });
-        /*editsearch.setOnSearchClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                searchFragment = new SearchFragment();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, searchFragment,TAG_NOTIFICATIONS)
-                        .commitAllowingStateLoss();
-                navItemIndex = 3;
-                CURRENT_TAG = TAG_NOTIFICATIONS;
-            }
-        });*/
         //================================================
 
         // load toolbar titles from string resources
