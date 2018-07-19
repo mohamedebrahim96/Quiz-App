@@ -197,9 +197,6 @@ public class MainActivity extends AppCompatActivity {
             applyFontToMenuItem(mi);
         }
     }
-
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (navItemIndex == 2) {
@@ -223,7 +220,6 @@ public class MainActivity extends AppCompatActivity {
         yourdrawable.setColorFilter(getResources().getColor(R.color.premium), PorterDuff.Mode.SRC_ATOP);*/
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
@@ -255,7 +251,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
     @Override
     public void onBackPressed() {
         if (!editsearch.isIconified()) {
